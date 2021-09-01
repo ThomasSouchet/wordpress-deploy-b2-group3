@@ -18,7 +18,7 @@
 
 					<div class="footer-credits">
 
-						<p class="footer-copyright">hello from footer;
+						<p class="footer-copyright">hello from B2-gourp3;
 							<?php
 							echo date_i18n(
 								/* translators: Copyright date format, see https://www.php.net/manual/datetime.format.php */
