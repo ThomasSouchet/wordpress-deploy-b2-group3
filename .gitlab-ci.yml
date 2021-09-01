@@ -2,6 +2,10 @@ image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
 
 deploy:
   script:
+    - export TF_VAR_dbname
+    - export TF_VAR_username
+    - export TF_VAR_password
+    - export TF_VAR_entrypoint
     - aws deploy push --application-name b2-group3 --s3-location s3://wp-b2group3/wp.zip --source ./
     - aws deploy create-deployment --application-name b2-group3 --deployment-group-name b2-g3-group --s3-location bucket=wp-b2group3,bundleType=zip,key=wp.zip --file-exists-behavior OVERWRITE
   only: 
