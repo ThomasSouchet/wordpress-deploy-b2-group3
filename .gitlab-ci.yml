@@ -6,3 +6,4 @@ deploy:
     - aws deploy create-deployment --application-name b2-group3 --deployment-group-name b2-g3-group --s3-location bucket=wp-b2group3,bundleType=zip,key=wp.zip --file-exists-behavior OVERWRITE
   only: 
    - main
+   - merge_requests
