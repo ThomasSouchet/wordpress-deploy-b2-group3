@@ -1,11 +1,16 @@
+aws ssm get-parameter --name db
+aws ssm get-parameter --name user
+aws ssm get-parameter --name password
+aws ssm get-parameter --name entrypoint
+
 sudo chown -R www-data: /srv/www
 
 sudo -u www-data cp /srv/www/wordpress/wp-config-sample.php /srv/www/wordpress/wp-config.php
 
-sudo -u www-data sed -i "s/database_name_here/$TF_VAR_dbname/" /srv/www/wordpress/wp-config.php
-sudo -u www-data sed -i "s/username_here/$TF_VAR_username/" /srv/www/wordpress/wp-config.php
-sudo -u www-data sed -i "s/password_here/$TF_VAR_password/" /srv/www/wordpress/wp-config.php
-sudo -u www-data sed -i "s/localhost/$TF_VAR_entrypoint/" /srv/www/wordpress/wp-config.php
+sudo -u www-data sed -i "s/database_name_here/$db/" /srv/www/wordpress/wp-config.php
+sudo -u www-data sed -i "s/username_here/$user/" /srv/www/wordpress/wp-config.php
+sudo -u www-data sed -i "s/password_here/$password/" /srv/www/wordpress/wp-config.php
+sudo -u www-data sed -i "s/$entrypoint/" /srv/www/wordpress/wp-config.php
 
 sudo sed -i "s|define( 'AUTH_KEY',         'put your unique phrase here' );|define('AUTH_KEY',         '.60x%TZlt ib,.h #mZAfUh_1A7AZJDo%SRRfEFLZ?/{Cu5Mj@o6dh01=\&o^OBtx');|" /srv/www/wordpress/wp-config.php
 sudo sed -i "s|define( 'SECURE_AUTH_KEY',  'put your unique phrase here' );|define('SECURE_AUTH_KEY',  'ISo-WHuPGffj%>c->\|eqhR\|_=7ol~MakBeuP:C?L0h,UJ-D43\!4,0X? o3~Q^w6C');|" /srv/www/wordpress/wp-config.php
