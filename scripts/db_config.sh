@@ -1,7 +1,7 @@
-aws ssm get-parameter --name db
-aws ssm get-parameter --name user
-aws ssm get-parameter --name password
-aws ssm get-parameter --name entrypoint
+db=$(aws ssm get-parameter --name db --output text --query Parameter.Value)
+user=$(aws ssm get-parameter --name user --output text --query Parameter.Value)
+password=$(aws ssm get-parameter --name password --output text --query Parameter.Value)
+entrypoint=$(aws ssm get-parameter --name entrypoint --output text --query Parameter.Value)
 
 sudo chown -R www-data: /srv/www
 
