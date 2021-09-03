@@ -18,7 +18,7 @@
 
 					<div class="footer-credits">
 
-						<p class="footer-copyright">hello from deploy without wp in ec2 
+						<p class="footer-copyright">hello from test7 
 							<?php
 							echo date_i18n(
 								/* translators: Copyright date format, see https://www.php.net/manual/datetime.format.php */
