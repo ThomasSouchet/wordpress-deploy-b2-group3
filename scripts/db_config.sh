@@ -3,10 +3,6 @@ user=$(aws ssm get-parameter --name user --output text --query Parameter.Value)
 password=$(aws ssm get-parameter --name password --output text --query Parameter.Value)
 entrypoint=$(aws ssm get-parameter --name entrypoint --output text --query Parameter.Value)
 
-sudo chown -R www-data: /srv/www
-
-sudo -u www-data cp /srv/www/wordpress/wp-config-sample.php /srv/www/wordpress/wp-config.php
-
 sudo -u www-data sed -i "s/database_name_here/$db/" /srv/www/wordpress/wp-config.php
 sudo -u www-data sed -i "s/username_here/$user/" /srv/www/wordpress/wp-config.php
 sudo -u www-data sed -i "s/password_here/$password/" /srv/www/wordpress/wp-config.php
@@ -21,3 +17,4 @@ sudo sed -i "s|define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );|defi
 sudo sed -i "s|define( 'LOGGED_IN_SALT',   'put your unique phrase here' );|define('LOGGED_IN_SALT',   'yr^GD1uH;\!6v 7)4Nq?]W=4Em\|S*v) 4\|c}4(\$=qM y+9kBUZ@\`72_2O}fNXd_Ix');|" /srv/www/wordpress/wp-config.php
 sudo sed -i "s|define( 'NONCE_SALT',       'put your unique phrase here' );|define('NONCE_SALT',       's#40p:_rUDsoX\&NJ-nzH+%M.\`j}_j5*3^}hN06Z{\|zGN@T>P9ekV_.\`<\|%Ya>rUR');|" /srv/www/wordpress/wp-config.php
 
+sudo service apache2 reload
