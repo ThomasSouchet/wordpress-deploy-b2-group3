@@ -5,9 +5,9 @@ entrypoint=$(aws ssm get-parameter --name b2group3_entrypoint --output text --qu
 
 sudo chown -R www-data: /srv/www
 
-sudo -u www-data sed -i "s/database_name_here/$db/" /srv/www/wordpress/wp-config.php
-sudo -u www-data sed -i "s/username_here/$user/" /srv/www/wordpress/wp-config.php
-sudo -u www-data sed -i "s/password_here/$password/" /srv/www/wordpress/wp-config.php
-sudo -u www-data sed -i "s/localhost/$entrypoint/" /srv/www/wordpress/wp-config.php
+wp config set DB_NAME "$db" --path="/srv/www/wordpress"
+wp config set DB_USER "$user" --path="/srv/www/wordpress"
+wp config set DB_PASSWORD "$password" DB_HOST "$entrypoint" --path="/srv/www/wordpress"
+wp config set DB_HOST "$entrypoint" --path="/srv/www/wordpress"
 
 sudo service apache2 reload
