@@ -10,9 +10,9 @@ echo $entrypoint
 
 sudo chown -R www-data: /srv/www
 
-sudo -u www-data -c 'wp config set DB_NAME "$db" --path="/srv/www/wordpress"'
-sudo -u www-data -c 'wp config set DB_USER "$user" --path="/srv/www/wordpress"'
-sudo -u www-data -c 'wp config set DB_PASSWORD "$password" --path="/srv/www/wordpress"'
-sudo -u www-data -c 'wp config set DB_HOST "$entrypoint" --path="/srv/www/wordpress"'
+sudo su -p -l www-data -s /bin/bash -c 'wp config set DB_NAME "$db" --path="/srv/www/wordpress"'
+sudo su -p -l www-data -s /bin/bash -c 'wp config set DB_USER "$user" --path="/srv/www/wordpress"'
+sudo su -p -l www-data -s /bin/bash -c 'wp config set DB_PASSWORD "$password" --path="/srv/www/wordpress"'
+sudo su -p -l www-data -s /bin/bash -c 'wp config set DB_HOST "$entrypoint" --path="/srv/www/wordpress"'
 
 sudo service apache2 reload
