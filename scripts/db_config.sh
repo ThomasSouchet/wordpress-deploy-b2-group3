@@ -5,6 +5,7 @@ entrypoint=$(aws ssm get-parameter --name b2group3_entrypoint --output text --qu
 
 sudo chown -R www-data: /srv/www
 
+# WP CLI
 wp config set DB_NAME "$db" --path="/srv/www/wordpress"
 wp config set DB_USER "$user" --path="/srv/www/wordpress"
 wp config set DB_PASSWORD "$password" --path="/srv/www/wordpress"
